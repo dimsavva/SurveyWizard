@@ -98,7 +98,8 @@ export class AppComponent implements OnInit {
         if (this.newQuestion != "") {
             this.DriverQuestions.push({
                 Id: this.SetNewId(this.DriverQuestions),
-                Description: this.newQuestion
+                Description: this.newQuestion,
+                IsNegative:false
             });
             this.newQuestion = "";
         }
@@ -154,8 +155,13 @@ export class AppComponent implements OnInit {
         }
     }
 
-    ShowDimensions() {
-    console.log(this.Dimensions)
+    selectNegative(e:any, dataItem: any) {
+        console.log(e)
+
+    console.log(dataItem)
+        let item = this.DriverQuestions.find(l => l.Id == dataItem.Id);
+
+        item.IsNegative = e.target.checked;
 
 
     }

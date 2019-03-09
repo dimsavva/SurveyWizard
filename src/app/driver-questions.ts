@@ -1,4 +1,6 @@
 export interface DriverQuestions {
-  Id: number;
-  Description: string;
+    Id: number;
+    Description: string;
+    IsNegative: boolean;
+
 }

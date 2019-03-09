@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="row">
                 <div class="col-md-12">
                     <div class="row">
@@ -21,7 +21,7 @@
                                         [navigable]="true"
                                         (cellClick)="cellClickHandler($event)"
                                         (cellClose)="cellCloseHandler($event)">
-                                <kendo-grid-column field="Description" title="Facets" width="200">
+                                <kendo-grid-column field="Description" title="Facets" width="160">
                                 </kendo-grid-column>
                                 <kendo-grid-command-column title="" width="40px">
                                     <ng-template kendoGridCellTemplate let-isNew="isNew">
@@ -63,7 +63,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-5">
             <div class="row">
                 <div class="col-md-12">
                     <div class="row" *ngIf="showQuestions">
@@ -79,7 +79,15 @@
                                 [navigable]="true"
                                 (cellClick)="cellClickHandler($event)"
                                 (cellClose)="cellCloseHandler($event)">
+                        <kendo-grid-checkbox-column field="IsNegative" title="Negative" width="55">
+                            <ng-template kendoGridCellTemplate let-dataItem>
+                                <input style="zoom: 1.2;" 
+                                       type="checkbox"
+                                       (change)="selectNegative($event,dataItem)"
+                                       [checked]="dataItem.IsNegative" />
+                            </ng-template>
 
+                        </kendo-grid-checkbox-column>
                         <kendo-grid-column field="Description" title="Questions" width="200">
                         </kendo-grid-column>
                         <kendo-grid-command-column title="" width="40px">
@@ -94,4 +102,3 @@
     </div>
 </div>
 
- 
