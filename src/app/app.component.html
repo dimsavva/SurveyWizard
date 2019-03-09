@@ -1,0 +1,97 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-12 mb-1">
+                            <input id="AddNewFacet" name="AddNewFacet" type="text" [(ngModel)]="newFacet" placeholder="Add Facet" class="k-textbox" style="width:calc(100% - 43px)">
+                            <input type="button" (click)="AddFacet()" value="Add" class="k-button" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 mb-1">
+                            <kendo-grid [data]="facetGridData"
+                                        [height]="410"
+                                        [selectable]="true"
+                                        (selectionChange)="onSelectFacet($event)"
+                                        (save)="saveHandler($event)"
+                                        (edit)="editHandler($event)"
+                                        (remove)="removeFacetHandler($event)"
+                                        [navigable]="true"
+                                        (cellClick)="cellClickHandler($event)"
+                                        (cellClose)="cellCloseHandler($event)">
+                                <kendo-grid-column field="Description" title="Facets" width="200">
+                                </kendo-grid-column>
+                                <kendo-grid-command-column title="" width="40px">
+                                    <ng-template kendoGridCellTemplate let-isNew="isNew">
+                                        <button *ngIf="!isNew" kendoGridRemoveCommand [primary]="true">x</button>
+                                    </ng-template>
+                                </kendo-grid-command-column>
+                            </kendo-grid>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row" *ngIf="showDrivers">
+                        <div class="col-md-12 mb-1">
+                            <input id="AddNewDriver" name="AddNewDriver" type="text" [(ngModel)]="newDriver" placeholder="Add Driver" class="k-textbox" style="width:calc(100% - 43px)">
+                            <input type="button" value="Add" (click)="AddDriver()" class="k-button" />
+                        </div>
+                    </div>
+                    <kendo-grid *ngIf="showDrivers"
+                                [data]="driverGridData"
+                                [height]="410"
+                                [selectable]="true"
+                                (selectionChange)="onSelectDriver($event)"
+                                (remove)="removeDriverHandler($event)"
+                                [navigable]="true"
+                                (cellClick)="cellClickHandler($event)"
+                                (cellClose)="cellCloseHandler($event)">
+                        <kendo-grid-column field="Description" title="Drivers" width="200">
+                        </kendo-grid-column>
+                        <kendo-grid-command-column title="" width="40px">
+                            <ng-template kendoGridCellTemplate let-isNew="isNew">
+                                <button *ngIf="!isNew" kendoGridRemoveCommand [primary]="true">x</button>
+                            </ng-template>
+                        </kendo-grid-command-column>
+                    </kendo-grid>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row" *ngIf="showQuestions">
+                        <div class="col-md-12 mb-1">
+                            <input id="AddNewFacet" name="AddNewFacet" type="text" [(ngModel)]="newQuestion" placeholder="Add Question" class="k-textbox" style="width:calc(100% - 43px)">
+                            <input type="button" value="Add" (click)="AddQuestion()" class="k-button" />
+                        </div>
+                    </div>
+                    <kendo-grid *ngIf="showQuestions"
+                                [data]="questionGridData"
+                                [height]="410"
+                                (remove)="removeQuestionHandler($event)"
+                                [navigable]="true"
+                                (cellClick)="cellClickHandler($event)"
+                                (cellClose)="cellCloseHandler($event)">
+
+                        <kendo-grid-column field="Description" title="Questions" width="200">
+                        </kendo-grid-column>
+                        <kendo-grid-command-column title="" width="40px">
+                            <ng-template kendoGridCellTemplate let-isNew="isNew">
+                                <button *ngIf="!isNew" kendoGridRemoveCommand [primary]="true">x</button>
+                            </ng-template>
+                        </kendo-grid-command-column>
+                    </kendo-grid>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+ 
